@@ -1,0 +1,1 @@
+@include('questions._item', compact('question'))

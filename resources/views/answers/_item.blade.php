@@ -1,0 +1,1 @@
+{!! Form::radio('answer', $answer->value) !!} {{$answer->value}}
