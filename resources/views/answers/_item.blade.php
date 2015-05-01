@@ -1,1 +1,1 @@
-{!! Form::radio('answer', $answer->value) !!} {{$answer->value}}
+{!! Form::radio('answer_id', $answer->id) !!} {{$answer->value}}<br >

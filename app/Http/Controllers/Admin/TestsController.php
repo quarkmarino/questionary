@@ -1,15 +1,11 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use App\Test;
-use App\Question;
-use App\Reply;
-
-class RepliesController extends Controller {
+class TestsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -28,7 +24,8 @@ class RepliesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$test = new Test;
+		return \View::make('admin.test.create', compact('test'));
 	}
 
 	/**
@@ -36,18 +33,9 @@ class RepliesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store($question_id)
+	public function store()
 	{
-		$test = Test::findOrFail(1);
-		$question = Question::whereTestId($test->id)->findOrFail($question_id);
-		
-		$input = \Input::all();
-		$reply = new Reply();
-		$reply->user_id = 1;
-		$reply->answer_id = $input['answer_id'];
-		$reply->question_id = $question_id;
-		$reply->save();
-		return \Redirect::route('tests.questions.show', ['test_id' => 1, 'questions_id' => $question->id + 1]);
+		//
 	}
 
 	/**

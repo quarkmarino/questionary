@@ -21,9 +21,14 @@ Route::controllers([
 ]);
 
 
-Route::resource('tests', 'TestsController');
-Route::resource('tests.questions', 'QuestionsController');
-Route::resource('tests.questions.replies', 'RepliesController');
+Route::resource('tests', 'TestsController', ['only' => 'index']);
+Route::resource('tests.questions', 'QuestionsController', ['only' => ['show']]);
+Route::resource('questions.replies', 'RepliesController', ['only' => ['store']]);
+
+Route::group(['prefix' => 'admin', 'before' => 'auth', 'namespace' => 'Admin'], function(){
+	Route::resource('tests', 'TestsController');
+	Route::resource('tests.questions', 'QuestionsController');
+});
 
 
 /*Route::get('/questions', 'QuestionsController@index');
